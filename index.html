@@ -1,24 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Угадай число</title>
-  <link rel="stylesheet" href="styles.css">
+    <title>Ванга Цифры</title>
+    <!-- Подключение Bootstrap CSS -->
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+<!-- Yandex Games SDK -->
+<script src="https://yandex.ru/games/sdk/v2"></script>
+<script>
+    YaGames.init().then(ysdk => {
+        console.log('Yandex SDK initialized');
+        window.ysdk = ysdk;
+    });
+</script>
+    <style>
+        body {
+            padding: 10px; /* Добавляем общие отступы по краям для красоты */
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Угадай число</h1>
-    <p>Введите минимальное и максимальное значения числа:</p>
-    <div class="form">
-      <input type="number" id="minValue" placeholder="Мин">
-      <input type="number" id="maxValue" placeholder="Макс">
-      <button onclick="startGame()">Начать игру</button>
+    <div class="container p-4 bg-light">
+        <div class="row justify-content-center align-items-center">
+            <div class="col text-center">
+                <h1>Угадай число</h1>
+                <p>Введите минимальное и максимальное значения числа:</p>
+                <div class="row">
+                    <div class="col mb-3">
+                        <input type="number" id="minValue" placeholder="Мин">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <input type="number" id="maxValue" placeholder="Макс">
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <button class="btn btn-success mb-2" onclick="startGame()">Начать игру</button>
+                    </div>
+                </div>
+                <p id="message"></p>
+                <input type="number" id="guess" placeholder="Проверить">
+                <button onclick="checkGuess()">Проверить</button>
+<!--                 <div class="row mb-2">
+                    <div class="col">
+                        <p id="attemps"></p>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <p id="adshownum"></p>
+                        <button onclick="fscads()">Узнать число за рекламу</button>
+                    </div>
+                </div>ебаный насос с этим сдк --> 
+            </div>
+        </div>
     </div>
-    <p id="message"></p>
-    <input type="number" id="guess" placeholder="Проверить">
-    <button onclick="checkGuess()">Проверить</button>
-  </div>
-  <script src="script.js"></script>
+
+    <!-- Подключение Bootstrap JS (необходимо для некоторых компонентов) -->
+    <script src="jq.js"></script>
+    <script src="script.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>let ysdk;
+function initGame(params) {
+  YaGames
+  .init(params)
+  .then(_sdk => {
+    ysdk = _sdk;
+
+    ysdk.features.LoadingAPI?.ready(); // Показываем SDK, что игра загрузилась и можно начинать играть
+  })
+  .catch(console.error);
+}</script>
 </body>
 </html>
