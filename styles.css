@@ -1,3 +1,12 @@
+html {
+            height: 100%;
+            margin: 0;
+        }
+
+        #wrapper {
+            min-height: 100%; 
+        }
+
 body {
   font-family: Arial, sans-serif;
   display: flex;
@@ -6,10 +15,10 @@ body {
   height: 100vh;
   margin: 0;
   background-color: #f0f0f0;
+  overflow-x: hidden; /* Предотвращает горизонтальную прокрутку */
 }
 
 .container {
-  text-align: center;
   background-color: #ffffff;
   padding: 20px;
   border-radius: 8px;
